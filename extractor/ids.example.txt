@@ -1,0 +1,7 @@
+# Archivo de ejemplo - copiar como ids.txt y reemplazar con IDs reales
+# Las líneas que comienzan con # son comentarios y se ignoran
+
+# Ejemplo de IDs de comprobantes a procesar:
+1111111
+2222222
+3333333

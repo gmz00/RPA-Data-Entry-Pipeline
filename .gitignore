@@ -1,0 +1,42 @@
+# Entornos virtuales y variables
+venv/
+.venv/
+env/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+*.so
+
+# Playwright y Testing
+playwright-report/
+test-results/
+playwright/.auth/
+
+# Logs y Outputs de datos
+*.log
+*.csv
+outputs_diarios/
+
+# Ignorar contenido de carpetas output, pero mantener las carpetas vivas
+extractor/output/*
+!extractor/output/.gitkeep
+loader/output/*
+!loader/output/.gitkeep
+
+# Archivos de ejecución (evitar subir lotes reales de producción)
+ids.txt
+
+# IDEs y Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
