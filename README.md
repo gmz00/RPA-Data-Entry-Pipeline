@@ -41,5 +41,5 @@ La implementación de este pipeline transformó la jornada operativa diaria, log
 
 Para revisar los detalles de implementación técnica, arquitectura de código, patrones de diseño aplicados y manuales de ejecución, por favor dirigirse a la documentación específica de cada módulo en este *monorepo*:
 
-* 📖 [Módulo Extractor - Documentación Técnica y Configuración](https://www.google.com/search?q=./extractor/README.md)
-* 📖 [Módulo Loader - Documentación Técnica y Configuración](https://www.google.com/search?q=./loader/README.md)
+* 📖 [Módulo Extractor - Documentación Técnica y Configuración](https://github.com/gmz00/RPA-Data-Entry-Pipeline/blob/main/extractor/README.md)
+* 📖 [Módulo Loader - Documentación Técnica y Configuración](https://github.com/gmz00/RPA-Data-Entry-Pipeline/blob/main/loader/README.md)

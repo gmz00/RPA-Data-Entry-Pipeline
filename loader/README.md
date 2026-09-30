@@ -30,8 +30,8 @@ reanudación ante interrupciones.
 
 Este proyecto es el **segundo módulo** de un flujo de dos etapas:
 
-1. **Módulo 1 — Extractor CLIENT_NAME:** extrae los datos de los comprobantes desde el
-   portal CLIENT_NAME y genera un CSV.
+1. **Módulo 1 — Extractor:** extrae los datos de los comprobantes desde el
+   portal del cliente y genera un CSV.
 2. **Módulo 2 — Oracle REIM Loader (este repositorio):** lee ese CSV y carga
    cada comprobante en Oracle REIM de forma automática.
 
@@ -48,7 +48,7 @@ Por cada comprobante, el loader:
 ## Arquitectura
 
 ```
-Portal CLIENT_NAME ──> [Módulo 1] ──> comprobantes.csv ──> [Módulo 2] ──> 
+Portal del cliente ──> [Módulo 1] ──> comprobantes.csv ──> [Módulo 2] ──> 
 ──> Oracle REIM
     │
     ├─> procesados.csv
@@ -114,7 +114,7 @@ TOLERANCIA_MAXIMA=100
 El loader espera el CSV generado por el Módulo 1 en:
 
 ```
-<directorio_padre>/modulo1_extractor_CLIENT_NAME/output/comprobantes.csv
+<directorio_padre>/modulo1_extractor/output/comprobantes.csv
 ```
 
 Para verificar que la ruta se resuelve correctamente:
@@ -167,7 +167,7 @@ el formato:
 2100136|2100135|2100134|...
 ```
 
-Este formato permite pegar los IDs directamente en el portal CLIENT_NAME para filtrar y
+Este formato permite pegar los IDs directamente en el portal del cliente para filtrar y
 confrontar los comprobantes correspondientes.
 
 ### Columnas de los CSV de salida
@@ -229,7 +229,7 @@ modulo2_oracle_loader/
 
 ### Mapeos
 
-Los datos del CSV (portal CLIENT_NAME) se traducen a los valores exactos que espera REIM:
+Los datos del CSV (portal) se traducen a los valores exactos que espera REIM:
 
 - **Tipo de documento:** `001` → `001_FACTURAS_A`, `201` → `201_FACTURA_DE_CREDITO_ELECTRONICA_MIPYMES_(FCE)_A`
 - **Contenido de factura:** `Liquido` → `Factura para liquidos`, etc. (con soporte ES/EN)

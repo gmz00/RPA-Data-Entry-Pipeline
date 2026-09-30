@@ -1,16 +1,15 @@
 # Extractor  - Módulo 1: Comprobantes a CSV
 
-Automatización para la extracción de datos de comprobantes desde el portal CLIENT_NAME y generación de un CSV estructurado, como paso previo a la carga en Oracle REIM (Módulo 2).
+Automatización para la extracción de datos de comprobantes desde el portal del cliente y generación de un CSV estructurado, como paso previo a la carga en Oracle REIM (Módulo 2).
 
-**Proyecto:** IBMer watsonx Challenge 2026  
-**Cliente:** CLIENT_NAME  
-**Autor:** Lautaro Gomez (Ing. en Sistemas - 2do año)
+**Proyecto:** IBMer watsonx Challenge 2026    
+**Autor:** Lautaro Gomez (Estudiante Ing. en Sistemas )
 
 ---
 
 ## Descripción
 
-Script de web scraping con Playwright que automatiza la extracción de datos desde el portal CLIENT_NAME.
+Script de web scraping con Playwright que automatiza la extracción de datos desde el portal del cliente.
 
 **Funcionalidades principales:**
 
@@ -30,7 +29,7 @@ Script de web scraping con Playwright que automatiza la extracción de datos des
 Este módulo es el primero de dos en el pipeline de automatización:
 
 ```
-Portal CLIENT_NAME
+Portal del cliente
     |
     v
 [Módulo 1 - Este script]
@@ -56,7 +55,7 @@ El objetivo final es eliminar la carga manual de datos en Oracle REIM, dejando c
 
 | Columna | Descripción |
 |---|---|
-| `id` | ID del comprobante en el portal CLIENT_NAME |
+| `id` | ID del comprobante en el portal del cliente |
 | `emisor` | Nombre del proveedor |
 | `tipo` | Tipo de comprobante (001, 201, etc.) |
 | `nro_comprobante` | Número de comprobante (formato: XXXXX-XXXXXXXX) |
@@ -305,7 +304,7 @@ python main.py
 ## Estructura del Proyecto
 
 ```
-modulo1_extractor_CLIENT_NAME/
+modulo1_extractor/
 │
 ├── config/
 │   ├── settings.py          # Configuracion global (URLs, timeouts, estructura CSV)
@@ -554,21 +553,21 @@ main.py
   |-- Valida existencia de ids.txt y credenciales
   |-- Inicializa CSVHandler (crea comprobantes.csv si no existe)
   |-- Lee IDs ya procesados del CSV (para evitar duplicados)
-  |-- Inicializa CLIENT_NAMEScraper (Playwright + Chromium)
-  |-- Realiza login en el portal CLIENT_NAME
+  |-- Inicializa Scraper (Playwright + Chromium)
+  |-- Realiza login en el portal del cliente
   |
   Para cada ID en ids.txt:
   |   |-- Navega a la URL del comprobante
   |   |
-  |   |-- CLIENT_NAMEExtractor.extraer_cabecera()
+  |   |-- Extractor.extraer_cabecera()
   |   |     Extrae: ID, Emisor, Tipo, Nro Comprobante, Fechas, CAE
   |   |     Mapea tipo de contenido por proveedor
   |   |
-  |   |-- CLIENT_NAMEExtractor.extraer_importes()
+  |   |-- Extractor.extraer_importes()
   |   |     Extrae: Neto Gravado, No Gravado, Importe Total
   |   |     Extrae la tabla de impuestos (itera filas <tr>)
   |   |
-  |   |-- CLIENT_NAMEExtractor.extraer_recepciones()
+  |   |-- Extractor.extraer_recepciones()
   |   |     Extrae: Nro Recepcion, Nro OC
   |   |
   |   |-- parser.parsear_a_fila_csv()
@@ -673,14 +672,11 @@ del logs\extractor.log
 
 ### Prioridad Alta
 
-- [ ] Modulo 2: Carga automatica en Oracle REIM a partir del CSV generado
-- [ ] Sistema de reintentos automaticos (3 intentos por comprobante)
 - [ ] Deteccion de cambios en la estructura del portal (alertas)
 
 ### Prioridad Media
 
 - [ ] Barra de progreso visual (tqdm)
-- [ ] Argumentos CLI: `--headless`, `--skip-processed`, `--ids-file`
 - [ ] Modo de validacion (compara CSV vs portal)
 
 ### Prioridad Baja
